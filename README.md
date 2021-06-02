@@ -24,6 +24,7 @@ m if the genotype information is ambiguous
 
 
 The Input Tree 
+
 An inferred tree is required as an input. The computation of probabilities of ordering is based on the input tree. Many methods can be used to infer the tree topology and branch length.
 
 Arguments
