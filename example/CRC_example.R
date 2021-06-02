@@ -1,7 +1,7 @@
 library(ape)
 library(phangorn)
 
-setwd("G:/Github_MO")
+
 source("code_MO_binary_function.R")
 crc1tree=read.tree("crc1.tre")
 
