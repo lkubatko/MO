@@ -1,0 +1,36 @@
+#PBS -l walltime=5:00:00
+#PBS -l nodes=1:ppn=1,mem=80GB
+#PBS -j oe
+#PBS -m abe
+
+export PATH=$PATH:/fs/project/kubatko.2-temp/gao.957/DNA_alignment/SCITE-master
+cd /fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SCITE_SimulateData_EXP10_10Missing
+ 
+#all_alpha=("05" "1" "2" "4")
+#all_beta=("05" "1" "2" "4")
+
+all_alpha=("2")
+all_beta=("2")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   mkdir "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SCITE_SimulateData_EXP10_10Missing/SCITE_ternary_alpha_0"$alpha"_beta_0"$beta""
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SCITE_SimulateData_EXP10_10Missing/SCITE_ternary_alpha_0"$alpha"_beta_0"$beta""
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+     cut -d, -f4-53 "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SCITE_SimulateData_EXP10_10Missing/Ternary_alpha0"$alpha"_beta0"$beta"/ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv" > tmpfile; mv tmpfile "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv"
+     sed '1d' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv" > tmpfile; mv tmpfile "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv"  
+     sed -i 's/,/ /g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv"
+     sed -i 's/"//g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv"
+     sed -i 's/-/3/g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv"
+     awk '!/NA/' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv" > tmpfile; mv tmpfile "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv"
+
+     row_num=$(cat "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv" | wc -l)
+     scite -i "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv" -n $row_num -m 50 -r 1 -l 1000000   -fd 0.2 -ad 0.1 0.1 -cc 0.02  
+     rm "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv"
+      done
+     done 
+   done
