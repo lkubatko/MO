@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=5:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=MO-multinomial
+
+module load intel
+
+module load R
+
+
+cd /fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting/MO_Binary
+
+pwd
+
+Rscript MO_binary_cellcoal_missing20_multinomial.R > MO_binary_cellcoal_missing20_multinomial.out

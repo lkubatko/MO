@@ -1,0 +1,43 @@
+#PBS -l walltime=48:00:00
+#PBS -l nodes=1:ppn=1,mem=80GB
+#PBS -j oe
+#PBS -m abe
+
+export PATH=$PATH:/fs/project/kubatko.2-temp/gao.957/DNA_alignment/SCITE-master
+cd /fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SCITE_Binary
+ 
+#all_alpha=("05" "1" "2" "4")
+#all_beta=("05" "1" "2" "4")
+
+error=("4")
+numSites=("20" "40" "80")
+
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   mkdir "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SCITE_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SCITE_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   for indexn in {1..100}
+   do
+
+	 echo "$indexn"
+          filename="sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10_ml0.gv"
+          if [ -f "$filename" ]; then
+            echo "$filename exists."
+          else 
+
+            cut -d, -f4-53 "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SimulateData_10Missing/Binary_alpha0"$alpha"_beta0"$alpha"_sites"$sites"/binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv" > tmpfile; mv tmpfile "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv"
+            sed '1d' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv" > tmpfile; mv tmpfile "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv"  
+            sed -i 's/,/ /g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv"
+            sed -i 's/2/1/g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv"
+            sed -i 's/-/3/g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv"
+            sed -i 's/"//g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv"
+            awk '!/NA/' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv" > tmpfile; mv tmpfile "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv"
+            row_num=$(cat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv" | wc -l)
+            scite -i "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv" -n $row_num -m 50 -r 1 -max_treelist_size 1 -l 1000000  -fd 0.4 -ad 0.4    
+            rm "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.csv"
+		  fi
+      done
+     done 
+   done

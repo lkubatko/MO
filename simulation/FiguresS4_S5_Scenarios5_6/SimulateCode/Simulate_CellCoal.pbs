@@ -1,0 +1,153 @@
+#PBS -l walltime=20:00:00
+#PBS -l nodes=1:ppn=1,mem=500GB
+#PBS -j oe
+#PBS -m abe
+
+#-n is the number of replicates, 
+#-s is the number of sampled cells, 
+#-l is number of sites, 
+#-e is the effective population size, 
+#-g is the growth rate, 
+#-k is the root branch length ratio, 
+#-i is the rate variation among branches, 
+#-b specifies the alphabet (DNA), 
+#-j is a fixed number of mutations, 
+#-p is the proportion of alternative model sites, 
+#-f are base frequencies, 
+#-r is the mutation matrix, 
+#-1 to -x control output options, 
+#-# is the seed for random number generation.
+
+
+#all_alpha=("05" "1" "2" "4")
+#all_beta=("05" "1" "2" "4")
+
+all_alpha=("1")
+all_beta=("1")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   mkdir "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/binary_alpha_0"$alpha"_beta_0"$beta""
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/binary_alpha_0"$alpha"_beta_0"$beta""
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+     
+    ../bin/cellcoal-1.1.0 -n1 -s10 -l18 -e10000 -g1.0e-04 -k0 -q0 -i1 -b0 -j18 -p0.0 -G0.1 0.001 -1 -2 -3 -4 -5 -6 -9 -v -x -T"True_sub_ternary_obs_0_1_tip_alpha_04_beta_04_matrix"$indexn"_mlTree.newick" -o"results"$indexn"" -#200011
+
+      done
+     done 
+   done
+
+
+bin/cellcoal-1.1.0 -n100 -s10 -l18 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j18 -p0.0 -G0.1 0.001 -1 -2 -3 -4 -5 -6 -9 -oresults -v -#200011
+####################################################10 tips
+#for error =0.05 20
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j20 -p0.0 -G0.05 0.04749999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_005_beta_005_20 -v -#200011
+
+#for error =0.05 40
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j40 -p0.0 -G0.05 0.04749999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_005_beta_005_40 -v -#200011
+
+#for error =0.05 80
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j80 -p0.0 -G0.05 0.04749999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_005_beta_005_80 -v -#200011
+
+
+#for error =0.1 20
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j20 -p0.0 -G0.1 0.09 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_01_beta_01_20 -v -#200011
+
+#for error =0.1 40
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j40 -p0.0 -G0.1 0.09 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_01_beta_01_40 -v -#200011
+
+#for error =0.1 80
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j80 -p0.0 -G0.1 0.09 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_01_beta_01_80 -v -#200011
+
+
+#for error =0.2 20
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j20 -p0.0 -G0.2 0.16 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_02_beta_02_20 -v -#200011
+
+#for error =0.2 40
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j40 -p0.0 -G0.2 0.16 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_02_beta_02_40 -v -#200011
+
+#for error =0.2 80
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j80 -p0.0 -G0.2 0.16 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_02_beta_02_80 -v -#200011
+
+
+#for error =0.4 20
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j20 -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_04_beta_04_20 -v -#200011
+
+#for error =0.4 40
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j40 -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_04_beta_04_40 -v -#200011
+
+#for error =0.4 80
+bin/cellcoal-1.1.0 -n100 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j80 -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_04_beta_04_80 -v -#200011
+
+######################
+#for error =0.4 80
+bin/cellcoal-1.1.0 -n100 -s10 -l5000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07  -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_04_beta_04_80 -v -#200011
+####################################################################50 tips
+#for error =0.05 20
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j20 -p0.0 -G0.05 0.04749999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_005_beta_005_20 -v -#200011
+
+#for error =0.05 40
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j40 -p0.0 -G0.05 0.04749999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_005_beta_005_40 -v -#200011
+
+#for error =0.05 80
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j80 -p0.0 -G0.05 0.04749999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_005_beta_005_80 -v -#200011
+
+
+#for error =0.1 20
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j20 -p0.0 -G0.1 0.09 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_01_beta_01_20 -v -#200011
+
+#for error =0.1 40
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j40 -p0.0 -G0.1 0.09 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_01_beta_01_40 -v -#200011
+
+#for error =0.1 80
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j80 -p0.0 -G0.1 0.09 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_01_beta_01_80 -v -#200011
+
+
+#for error =0.2 20
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j20 -p0.0 -G0.2 0.16 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_02_beta_02_20 -v -#200011
+
+#for error =0.2 40
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j40 -p0.0 -G0.2 0.16 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_02_beta_02_40 -v -#200011
+
+#for error =0.2 80
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j80 -p0.0 -G0.2 0.16 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_02_beta_02_80 -v -#200011
+
+
+#for error =0.4 20
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j20 -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_04_beta_04_20 -v -#200011
+
+#for error =0.4 40
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j40 -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_04_beta_04_40 -v -#200011
+
+#for error =0.4 80
+bin/cellcoal-1.1.0 -n100 -s50 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j80 -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -9 -oresults_alpha_04_beta_04_80 -v -#200011
+
+##########################################################finite site
+#for error =0.4 20
+
+bin/cellcoal-1.1.0 -n5 -s10 -l1000 -e10000 -g0.001 -k0 -q0 -i1 -b0 -u1.0e-07 -j80 -m2-p0.0 -G0.4 0.23999  -1 -2 -3 -4 -5 -6 -7 -9  -orfinitest -v -#200011
+
+##################################################################trees only
+
+bin/cellcoal-1.1.0 -n20 -s9 -l1000 -e10000 -g0.001 -k1 -q1 -b1 -u1.0e-07 -5 -p0.0 -G0.4 0.23999  -1 -2 -3 -4 -5 -6 -7 -9  -orfinitest -v -#200011
+
+bin/cellcoal-1.1.0 -n20 -s9 -l1000 -e10000 -g0.001 -k1 -q1 -b1 -u1.0e-07 -10 -p0.0 -G0.4 0.23999  -1 -2 -3 -4 -5 -6 -7 -9  -orfinitest -v -#200011
+
+bin/cellcoal-1.1.0 -n20 -s9 -l1000 -e10000 -g0.001 -k1 -q1 -b1 -u1.0e-07 -80 -p0.0 -G0.4 0.23999  -1 -2 -3 -4 -5 -6 -7 -9  -orfinitest -v -#200011
+
+
+###################################################################trees 50 sites
+
+
+#for error =0.4 20
+bin/cellcoal-1.1.0 -n20 -s49 -l1000 -e10000 -g0.001 -k1 -q1 -b0 -u1.0e-07 -j20 -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -7 -9 -oresults_alpha_04_beta_04_20sites_50tips -v -#200011
+
+#for error =0.4 40
+bin/cellcoal-1.1.0 -n20 -s49 -l1000 -e10000 -g0.001 -k1 -q1 -b0 -u1.0e-07 -j40 -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -7 -9 -oresults_alpha_04_beta_04_40sites_50tips -v -#200011
+
+#for error =0.4 80
+bin/cellcoal-1.1.0 -n20 -s49 -l1000 -e10000 -g0.001 -k1 -q1 -b0 -u1.0e-07 -j80 -p0.0 -G0.4 0.23999 -1 -2 -3 -4 -5 -6 -7 -9 -oresults_alpha_04_beta_04_80sites_50tips -v -#200011

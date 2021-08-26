@@ -1,0 +1,36 @@
+#PBS -l walltime=5:00:00
+#PBS -l nodes=1:ppn=1,mem=80GB
+#PBS -j oe
+#PBS -m abe
+
+export PATH=$PATH:/fs/project/kubatko.2-temp/gao.957/DNA_alignment/SCITE-master
+cd /fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SCITE_Ternary
+ 
+#all_alpha=("05" "1" "2" "4")
+#all_beta=("05" "1" "2" "4")
+
+error=("2")
+numSites=("20" "40" "80")
+
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   mkdir "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SCITE_Ternary/Ternary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result_20"
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SCITE_Ternary/Ternary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result_20"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+     cut -d, -f4-54 "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/br_collapsed_snv_hap"$indexn"_20.csv" > tmpfile; mv tmpfile "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv"
+     sed '1d' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv" > tmpfile; mv tmpfile "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv"  
+     sed -i 's/,/ /g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv"
+     #sed -i 's/2/1/g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv"
+     sed -i 's/-/3/g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv"
+     sed -i 's/"//g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv"
+     awk '!/NA/' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv" > tmpfile; mv tmpfile "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv"
+     row_num=$(cat "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv" | wc -l)
+     scite -i "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv" -n $row_num -m 51 -r 1 -max_treelist_size 1 -l 1000000 -fd 0.2 -ad 0.1 0.1 -cc 0.02     
+     rm "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.csv"
+      done
+     done 
+   done

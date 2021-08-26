@@ -1,0 +1,15 @@
+#PBS -l walltime=100:00:00
+#PBS -l nodes=1:ppn=1,mem=20GB
+#PBS -j oe
+#PBS -m abe
+
+module load intel
+
+module load R
+
+
+cd /fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/MO_Ternary
+
+pwd
+
+Rscript MO_ternary_cellcoal_sites40_p7.R > MO_ternary_cellcoal_sites40_p7.out
