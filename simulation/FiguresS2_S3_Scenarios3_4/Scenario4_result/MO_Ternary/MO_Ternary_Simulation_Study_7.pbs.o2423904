@@ -1,4 +1,0 @@
-/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SimulateData_EXP10
-Warning message:
-In dir.create(ternary_folder_form_result) :
-  '/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SimulateData_EXP10/Ternary_alpha02_beta01_result' already exists
