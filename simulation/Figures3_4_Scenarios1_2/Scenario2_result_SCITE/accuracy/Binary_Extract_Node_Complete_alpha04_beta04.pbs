@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=25:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=SCITE-binary-scenario2-accuracy-complete
+
+all_alpha=("4")
+all_beta=("4")
+
+for alpha in "${all_alpha[@]}"
+ do
+  echo "$alpha"
+   for beta in "${all_beta[@]}"
+    do
+     echo "$beta"
+      cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SCITE/SCITE_Binary/SCITE_binary_alpha_0"$alpha"_beta_0"$beta"_Fixed"
+   
+       for indexn in {1..1000}
+        do
+         echo "$indexn"
+  
+          filename=$(find -name 'sub_binary_obs_0_1_tip_alpha_0'$alpha'_beta_0'$beta'_matrix'$indexn'_ml*.gv' | sort -V | tail -1)
+
+          ../extract_tree_lines_new $filename "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_node_order_"$indexn".txt"
+  
+   done
+  done
+ done
+
+

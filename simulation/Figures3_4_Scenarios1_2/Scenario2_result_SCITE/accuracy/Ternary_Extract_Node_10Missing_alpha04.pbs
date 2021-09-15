@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=25:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=SCITE-ternary-scenario2-accuracy-10missing
+
+
+all_alpha=("4")
+all_beta=("05" "1" "2" "4")
+
+for alpha in "${all_alpha[@]}"
+ do
+  echo "$alpha"
+  for beta in "${all_beta[@]}"
+  do
+   echo "$beta"
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SCITE/SCITE_Ternary_10missing/SCITE_ternary_alpha_0"$alpha"_beta_0"$beta""
+   
+   for indexn in {1..1000}
+    do
+     echo "$indexn"
+  
+        filename=$(find -name 'sub_obs_0_1_tip_alpha_0'$alpha'_beta_0'$beta'_matrix'$indexn'_ml*.gv' | sort -V | tail -1)
+
+  
+        ../extract_tree_lines_new $filename "sub_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_node_order_"$indexn".txt"
+  
+   done
+  done
+ done
+
+

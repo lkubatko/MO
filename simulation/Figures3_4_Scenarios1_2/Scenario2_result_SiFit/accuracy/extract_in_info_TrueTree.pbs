@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=25:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=SiFit-binary-scenario2-complete
+
+
+all_alpha=("05" "1" "2" "4")
+all_beta=("05" "1" "2" "4")
+
+#all_alpha=("05")
+#all_beta=("05")
+
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+
+     /fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+  
+   done
+  done
+done
+

@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=5:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=SiFit-binary-Scenario2-complete
+
+
+#export PATH=$PATH:/fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit
+cd /fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit
+
+
+
+
+
+ 
+all_alpha=("05" "1" "2" "4")
+all_beta=("05" "1" "2" "4")
+
+#all_alpha=("05")
+#all_beta=("05")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   mkdir "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_20missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_20missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+     
+     awk '!/NA/' "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/SimulateData_New_20Missing_EXP10/Binary_alpha0"$alpha"_beta0"$beta"/binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".csv" > tmpfile; mv tmpfile "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     
+     cut -d, -f2,4-13 "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > tmpfile; mv tmpfile "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     sed -n -e '1p' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     
+     sed '1d' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > tmpfile; mv tmpfile "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"  
+     
+     sed -i 's/"First_branch",//g' "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     sed -i 's/,/ /g' "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     sed -i 's/"//g' "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     
+     sed -i 's/,/ /g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     sed -i 's/-/3/g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     sed -i 's/"//g' "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     
+ 
+     cat "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" | sed 's/\|/ /'|awk '{print $1}'> "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     
+     cp "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     sed -i 's/2/1/g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     
+     #row_num=$(cat "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" | wc -l)
+     
+     #java -jar /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar -m 10 -n $row_num -fp 0.05 -fn 0.05 -iter 10000 -df 1 -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -ipMat "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "output_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     
+     #awk '{for (I=1;I<=NF;I++) if ($I == "=") {print $(I+1)};}' "output_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "output_2_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+     
+     #res=$(<"output_2_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt")
+     
+     #res=(${res[@]})
+     
+     #java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn ${res[2]} -w ${res[4]} -d ${res[3]} -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done

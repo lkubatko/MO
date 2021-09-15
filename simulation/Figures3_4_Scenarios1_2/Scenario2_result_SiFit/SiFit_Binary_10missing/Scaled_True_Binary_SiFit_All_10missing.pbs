@@ -1,0 +1,372 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=25:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=SiFit-binary-scenario2-10%
+
+
+#export PATH=$PATH:/fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit
+cd /fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit
+
+
+
+
+
+ 
+#all_alpha=("05" "1" "2" "4")
+#all_beta=("05" "1" "2" "4")
+
+all_alpha=("05")
+all_beta=("05")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn 0.05 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("05")
+all_beta=("1")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn 0.1 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("05")
+all_beta=("2")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn 0.2 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("05")
+all_beta=("4")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn 0.4 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+############################################################################################################################################################
+
+
+
+all_alpha=("1")
+all_beta=("05")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.1 -fn 0.05 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("1")
+all_beta=("1")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.1 -fn 0.1 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("1")
+all_beta=("2")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.1 -fn 0.2 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("1")
+all_beta=("4")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.1 -fn 0.4 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+###############################################################################################################################################
+
+
+all_alpha=("2")
+all_beta=("05")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.2 -fn 0.05 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("2")
+all_beta=("1")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.2 -fn 0.1 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("2")
+all_beta=("2")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.2 -fn 0.2 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("2")
+all_beta=("4")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.2 -fn 0.4 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+###################################################################################################################################################
+all_alpha=("4")
+all_beta=("05")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.4 -fn 0.05 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("4")
+all_beta=("1")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.4 -fn 0.1 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("4")
+all_beta=("2")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.4 -fn 0.2 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("4")
+all_beta=("4")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2_result_SiFit/SiFit_SimulateData_10missing/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.4 -fn 0.4 -w 0 -d 0 -df 0 -ipMat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario2/RandomTree/Scaled_RandomTree_"$indexn".tre" -cellNames "cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "Scaled_TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "Scaled_TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
