@@ -761,7 +761,7 @@ library(ape)
 
 parameter_setting = expand.grid(alpha=c(0.05,0.1,0.2,0.4),
                                 beta =c(0.05,0.1,0.2,0.4))
-set.seed(1000)
+
 for(paraInd in 2:2){
   
 alpha =   parameter_setting[paraInd,1]
@@ -782,7 +782,7 @@ sequencing_error_model=matrix(c(1-alpha01-alpha02,alpha01,alpha02,
                                 gamma20,gamma21,1-gamma21-gamma21),nrow=3,byrow = TRUE)
 print(sequencing_error_model)
 unit_theta = 10^(-7)
-unit_gamma = 10^(-14)
+unit_gamma = 10^(-9)
 unit_mu = 10 ^(-2)
 number_br = 98
 number_cell = 50

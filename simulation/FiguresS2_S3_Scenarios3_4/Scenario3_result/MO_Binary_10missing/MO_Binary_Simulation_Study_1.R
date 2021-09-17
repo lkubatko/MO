@@ -454,8 +454,6 @@ generate_prob_binary <- function(alpha,beta,unit_lambda,number_br,number_cell,no
 
 parameter_setting = expand.grid(alpha=c(0.05,0.1,0.2,0.4),
                                 beta =c(0.05,0.1,0.2,0.4))
-set.seed(1000)
-
 for(paraInd in 1:1){
   
   
@@ -467,7 +465,7 @@ sequencing_error_model=matrix(c(1-alpha,alpha,
                                 beta,1-beta),nrow=2,byrow = TRUE)
 print(sequencing_error_model)
 unit_theta = 10^(-7)
-unit_gamma = 10^(-14)
+unit_gamma = 10^(-9)
 unit_mu = 10 ^(-2)
 number_br = 98
 number_cell = 50
