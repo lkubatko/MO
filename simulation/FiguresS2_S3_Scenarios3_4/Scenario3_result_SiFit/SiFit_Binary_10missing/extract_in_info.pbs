@@ -1,0 +1,26 @@
+#PBS -l walltime=30:00:00
+#PBS -l nodes=1:ppn=1,mem=80GB
+#PBS -j oe
+#PBS -m abe
+
+
+all_alpha=("05" "1" "2" "4")
+all_beta=("05" "1" "2" "4")
+
+
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting/SiFit_SimulateData/SiFit_binary_alpha_0"$alpha"_beta_0"$beta""
+   for indexn in {1..1000}
+   do
+     echo "$indexn"
+
+  ./extract_in_info "outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+  
+   done
+  done
+done
+

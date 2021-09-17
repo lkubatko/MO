@@ -1,0 +1,369 @@
+#PBS -l walltime=2:00:00
+#PBS -l nodes=1:ppn=1,mem=80GB
+#PBS -j oe
+#PBS -m abe
+
+#export PATH=$PATH:/fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit
+cd /fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10
+
+
+
+
+
+ 
+#all_alpha=("05" "1" "2" "4")
+#all_beta=("05" "1" "2" "4")
+
+all_alpha=("05")
+all_beta=("05")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn 0.05 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("05")
+all_beta=("1")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn 0.1 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("05")
+all_beta=("2")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn 0.2 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("05")
+all_beta=("4")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn 0.4 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+############################################################################################################################################################
+
+
+
+all_alpha=("1")
+all_beta=("05")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.1 -fn 0.05 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("1")
+all_beta=("1")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.1 -fn 0.1 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("1")
+all_beta=("2")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.1 -fn 0.2 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("1")
+all_beta=("4")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.1 -fn 0.4 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+###############################################################################################################################################
+
+
+all_alpha=("2")
+all_beta=("05")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.2 -fn 0.05 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("2")
+all_beta=("1")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.2 -fn 0.1 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("2")
+all_beta=("2")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.2 -fn 0.2 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("2")
+all_beta=("4")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.2 -fn 0.4 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+###################################################################################################################################################
+all_alpha=("4")
+all_beta=("05")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.4 -fn 0.05 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("4")
+all_beta=("1")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.4 -fn 0.1 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("4")
+all_beta=("2")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.4 -fn 0.2 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+
+all_alpha=("4")
+all_beta=("4")
+pwd
+for alpha in "${all_alpha[@]}"
+ do
+  for beta in "${all_beta[@]}"
+  do
+   
+   cd "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"_TrueTree"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.4 -fn 0.4 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -tree "True_sub_ternary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn"_mlTree.newick" -cellNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/cellname_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/genename_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/DNA_alignment/bowtie2-2.3.4.2-linux-x86_64/reference/Simulation_Setting_LargeTree/SiFit_SimulateData_EXP10/SiFit_binary_alpha_0"$alpha"_beta_0"$beta"/TrueTree_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$beta"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
