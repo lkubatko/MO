@@ -2,7 +2,7 @@
 library(ape)
 library(phangorn)
 
-source("/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/Figures3_4_Scenarios1_2/Scenario1_result/code_MO_binary_function.R")
+source("./Figures3_4_Scenarios1_2/Scenario1_result/code_MO_binary_function.R")
 
 #there are 16 settings with different error rates for complete data
 parameter_setting = expand.grid(alpha=c(0.05,0.1,0.2,0.4),
