@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=25:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=SCITE-binary-scenario5
+
+export PATH=$PATH:/fs/project/kubatko.2-temp/gao.957/DNA_alignment/SCITE-master
+cd /fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SCITE_rmd/SCITE_Binary
+ 
+#all_alpha=("05" "1" "2" "4")
+#all_beta=("05" "1" "2" "4")
+
+error=("2")
+numSites=("20" "40" "80")
+
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   mkdir "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SCITE_rmd/SCITE_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SCITE_rmd/SCITE_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+          filename="sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_ml0.gv"
+          if [ -f "$filename" ]; then
+            echo "$filename exists."
+          else 
+          
+            cut -d, -f4-54 "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/br_collapsed_snv_hap"$indexn".csv" > tmpfile; mv tmpfile "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
+            sed '1d' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv" > tmpfile; mv tmpfile "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"  
+            sed -i 's/,/ /g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
+            sed -i 's/2/1/g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
+            sed -i 's/-/3/g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
+            sed -i 's/"//g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
+            awk '!/NA/' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv" > tmpfile; mv tmpfile "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
+            row_num=$(cat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv" | wc -l)
+            scite -i "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv" -n $row_num -m 51 -r 1 -max_treelist_size 1 -l 1000000  -fd 0.2 -ad 0.2     
+            rm "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
+          fi
+      done
+     done 
+   done
