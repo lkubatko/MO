@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=25:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=SiFit-binary-scenario5
+
+export PATH=$PATH:/fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit
+cd /fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary
+
+
+
+
+
+ 
+#all_alpha=("05" "1" "2" "4")
+#all_beta=("05" "1" "2" "4")
+
+error=("05")
+numSites=("20" "40" "80")
+
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   
+   mkdir "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+     java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.05 -fn 0.05 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/trees_dir/trees"$indexn".newick"  -cellNames "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/cellname_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/genename_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/TrueTree_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+error=("1")
+numSites=("20" "40" "80")
+
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   
+   
+   mkdir "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+      java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.1 -fn 0.1 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/trees_dir/trees"$indexn".newick"  -cellNames "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/cellname_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/genename_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/TrueTree_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+
+############################################################################################################################################
+
+
+
+error=("2")
+numSites=("20" "40" "80")
+
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   
+   
+   mkdir "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+      java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.2 -fn 0.2 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/trees_dir/trees"$indexn".newick"  -cellNames "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/cellname_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/genename_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/TrueTree_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+
+############################################################################################################################################
+
+
+
+error=("4")
+numSites=("20" "40" "80")
+
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   
+   mkdir "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result"
+   
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+         
+      java -cp /fs/project/kubatko.2-temp/gao.957/DNA_alignment/SiFit/SiFit.jar SiFit.algorithm.InferAncestralStates -fp 0.4 -fn 0.4 -w 0 -d 0 -df 0 -ipMat "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -tree "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/trees_dir/trees"$indexn".newick"  -cellNames "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/cellname_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -geneNames "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/results_alpha_0"$alpha"_beta_0"$alpha"_"$sites"/snv_haplotypes_dir/genename_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" -expectedMatrix  "/fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_SiFit_rmd/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/TrueTree_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt" > "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt"
+ 
+      done
+     done 
+   done
+############################################################################################################################################
+
+

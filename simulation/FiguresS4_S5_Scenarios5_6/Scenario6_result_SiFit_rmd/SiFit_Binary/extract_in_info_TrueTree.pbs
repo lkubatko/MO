@@ -1,0 +1,202 @@
+#PBS -l walltime=2:00:00
+#PBS -l nodes=1:ppn=1,mem=20GB
+#PBS -j oe
+#PBS -m abe
+
+
+all_alpha=("05" "1" "2" "4")
+all_beta=("05" "1" "2" "4")
+
+#all_alpha=("05")
+#all_beta=("05")
+
+error=("05" "1" "2" "4")
+numSites=("20" "40" "80")
+
+#complete data
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".txt"
+  
+   done
+  done
+done
+
+error=("05" "1" "2" "4")
+numSites=("20" "40" "80")
+
+#10%missing
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_10.txt"
+  
+   done
+  done
+done
+
+error=("05" "1" "2" "4")
+numSites=("20" "40" "80")
+
+#20%missing
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_20.txt"
+  
+   done
+  done
+done
+
+#10%lost k1
+error=("05" "1" "2" "4")
+numSites=("20" "40" "80")
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_lostrate01_k1.txt"
+  
+   done
+  done
+done
+
+#10%lost k2
+error=("05" "1" "2" "4")
+numSites=("20" "40" "80")
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_lostrate01_k2.txt"
+  
+   done
+  done
+done
+
+#20%lost k1
+error=("05" "1" "2" "4")
+numSites=("20" "40" "80")
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_lostrate02_k1.txt"
+  
+   done
+  done
+done
+
+#20%lost k2
+error=("05" "1" "2" "4")
+numSites=("20" "40" "80")
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_lostrate02_k2.txt"
+  
+   done
+  done
+done
+
+
+
+#finite mu1
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_1.txt"
+  
+   done
+  done
+done
+
+
+#finite mu01
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_01.txt"
+  
+   done
+  done
+done
+
+
+#finite mu001
+pwd
+for alpha in "${error[@]}"
+ do
+  for sites in "${numSites[@]}"
+  do
+   cd "/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/SiFit_Binary/Binary_alpha_0"$alpha"_beta_0"$alpha"_"$sites"_result/"
+   for indexn in {1..100}
+   do
+     echo "$indexn"
+
+     ../extract_in_info "TrueTree_outcome_order_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn"_001.txt"
+  
+   done
+  done
+done
