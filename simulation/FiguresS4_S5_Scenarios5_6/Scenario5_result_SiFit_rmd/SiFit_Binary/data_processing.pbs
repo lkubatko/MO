@@ -1,0 +1,13 @@
+#PBS -l walltime=3:00:00
+#PBS -l nodes=1:ppn=1,mem=80GB
+#PBS -j oe
+#PBS -m abe
+
+module load intel
+
+
+module load R
+
+cd /fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_10tips/SiFit_Binary
+
+Rscript data_processing.R > data_processing.out

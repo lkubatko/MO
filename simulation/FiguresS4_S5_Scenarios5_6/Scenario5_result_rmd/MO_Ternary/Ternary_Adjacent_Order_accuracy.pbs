@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=25:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=MO-binary-scenario5
+
+module load intel
+
+module load R
+
+
+cd /fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/
+
+pwd
+
+Rscript /fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario5_result_rmd/MO_Ternary/Ternary_Adjacent_Order_accuracy.R > /fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario5_result_rmd/MO_Ternary/Ternary_Adjacent_Order_accuracy.out
