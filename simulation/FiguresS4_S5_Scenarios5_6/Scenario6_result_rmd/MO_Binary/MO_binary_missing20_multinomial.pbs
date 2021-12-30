@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=5:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=MO-binary-multinomial
+
+module load intel
+
+module load R
+
+
+cd /fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_50tips/MO_Binary
+
+pwd
+
+Rscript MO_binary_cellcoal_missing20_multinomial.R > MO_binary_cellcoal_missing20_multinomial.out

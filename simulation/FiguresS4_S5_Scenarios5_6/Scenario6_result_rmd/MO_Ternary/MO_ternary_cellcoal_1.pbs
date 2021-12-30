@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=15:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --job-name=MO-ternary-scenario6
+
+module load intel
+
+module load R
+
+
+cd /fs/project/kubatko.2-temp/gao.957/workspace/github_MO/MO/simulation/FiguresS4_S5_Scenarios5_6/Scenario6_result_rmd/MO_Ternary
+
+
+pwd
+
+Rscript MO_ternary_cellcoal_1.R > MO_ternary_cellcoal_1.out
