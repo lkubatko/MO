@@ -76,7 +76,7 @@ for(paraInd in 1:dim(parameter_setting)[1]){
     
     sampletr = trueTree
     binary_folder_form_result_br = sprintf("/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_10tips/results_alpha_0%s_beta_0%s_%s/true_haplotypes_dir/br_collapsed_true_hap%s.csv",alpha_str,alpha_str,numSites,indexn)
-    obs_binary_folder_form_result_br = sprintf("/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_10tips/results_alpha_0%s_beta_0%s_%s/snv_haplotypes_dir/br_collapsed_snv_hap%s_20.csv",alpha_str,alpha_str,numSites,indexn)
+    obs_binary_folder_form_result_br = sprintf("/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_10tips/results_alpha_0%s_beta_0%s_%s/snv_haplotypes_dir/br_collapsed_snv_hap%s_10.csv",alpha_str,alpha_str,numSites,indexn)
     
     mat_obs_form_0_1 = read.csv(obs_binary_folder_form_result_br)
     
@@ -105,7 +105,15 @@ for(paraInd in 1:dim(parameter_setting)[1]){
     for (i in 1:dim(initial_obs_0_1_recode)[1]){
       
       print(i)
-
+      
+      #rd_unit_theta <- rbeta(10, (10^7)*unit_theta, (10^7)*(1-unit_theta))
+      #rd_unit_gamma <- rbeta(10, (10^14)*unit_gamma, (10^14)*(1-unit_gamma))
+      
+      #rd_unit_theta =  rgamma(n = 3, shape = 100, scale = 0.01*unit_theta)
+      #rd_unit_gamma = rgamma(3, shape = 100, scale = 0.01*unit_gamma)
+      
+      
+      
       generate_prob_br <- MO_binary_multinomial(alpha,beta,initial_obs_0_1_recode[i,],sampletr)
       
       
@@ -117,7 +125,7 @@ for(paraInd in 1:dim(parameter_setting)[1]){
       
 
     
-    binary_prob_matrix_all_0_1_out = sprintf("/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_10tips/MO_Binary/Binary_alpha0%s_beta0%s_%s_result/all_binary_prob_matrix_all_0_1_out_matrix%s_20_multinomial.csv",alpha_str,alpha_str,numSites,indexn)
+    binary_prob_matrix_all_0_1_out = sprintf("/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_10tips/MO_Binary/Binary_alpha0%s_beta0%s_%s_result/all_binary_prob_matrix_all_0_1_out_matrix%s_10_multinomial.csv",alpha_str,alpha_str,numSites,indexn)
     
     selected_br=c()
     for(i in 1:dim(binary_prob_matrix_all_0_1)[1]){
@@ -135,4 +143,4 @@ for(paraInd in 1:dim(parameter_setting)[1]){
   All_loc_dat=rbind(All_loc_dat,location_acc)
 }
 
-write.csv(All_loc_dat,file="/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_10tips/MO_Binary/All_MO_binary_location_accuracy_20_multinomal.csv")
+write.csv(All_loc_dat,file="/fs/project/kubatko.2-temp/gao.957/workspace/cellcoal-master/cellcoal_10tips/MO_Binary/All_MO_binary_location_accuracy_10_multinomial.csv")

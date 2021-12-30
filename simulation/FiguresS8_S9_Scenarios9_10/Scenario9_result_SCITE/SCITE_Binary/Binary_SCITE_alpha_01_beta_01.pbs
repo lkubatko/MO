@@ -34,7 +34,7 @@ for alpha in "${error[@]}"
             sed -i 's/"//g' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
             awk '!/NA/' "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv" > tmpfile; mv tmpfile "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
             row_num=$(cat "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv" | wc -l)
-            scite -i "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv" -n $row_num -m 10 -r 1 -max_treelist_size 1 -l 1000000  -fd 0.1 -ad 0.1     
+            scite -i "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv" -n $row_num -m 10 -r 1 -max_treelist_size 1 -l 1000000  -fd 0.1 -ad 0.1  -seed 1000   
             rm "sub_binary_obs_0_1_tip_alpha_0"$alpha"_beta_0"$alpha"_matrix"$indexn".csv"
           fi
       done
