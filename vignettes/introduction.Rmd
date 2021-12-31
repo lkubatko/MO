@@ -1,0 +1,39 @@
+---
+title: "introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MO)
+crc1tree=read.tree("crc1.tre")
+
+cells=crc1tree$tip.label
+genotype_178_cells_gt=read.csv("CRC1_mutation_data.csv")
+
+genotype_178_initial_obs=genotype_178_cells_gt[c(cells)]
+
+alpha = 1.52/100
+beta = 7.89/100
+
+lambda01=1
+lambda02=0
+lambda12=0
+  
+test=MO(alpha,beta,lambda01,lambda02,lambda12,initial_obs = genotype_178_cells_gt,t=crc1tree,binary=TRUE,multinomialPrior=FALSE)
+
+
+
+
+  
+```
